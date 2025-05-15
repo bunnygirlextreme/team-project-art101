@@ -1,0 +1,114 @@
+// handles popup 2 for creature
+function openPopup2() {
+  document.getElementById("popup").style.display = "none";
+
+  const popup = document.getElementById("popup");
+  const popup2 = document.getElementById("popup2");
+
+  popup2.style.top = popup.style.top;
+  popup2.style.left = popup.style.left;
+
+  popup2.style.display = "block";
+}
+
+// Closes all popups
+function closeAll() {
+  const popup = document.getElementById("popup");
+  const popup2 = document.getElementById("popup2");
+  const overlay = document.getElementById("overlay");
+
+  if (popup) {
+    popup.style.display = "none";
+  }
+
+  if (popup2) {
+   
+    $(popup2).fadeOut(2300);
+
+    setTimeout(() => {
+      overlay.style.display = "none";
+    }, 2300);
+    
+    const sound = new Audio('sounds/smited.mov'); 
+    sound.play();
+
+    //popup2.style.display = "none";
+    return;
+  }
+
+  
+  if (overlay) {
+    overlay.style.display = "none";
+  }
+}
+
+// Main popup maker
+
+function openRandomPopup() {
+  const overlay = document.getElementById("overlay");
+  const popup = document.getElementById("popup");
+
+  const maxX = window.innerWidth - 400;
+  const maxY = window.innerHeight - 400;
+
+  const randomX = Math.floor(Math.random() * maxX);
+  const randomY = Math.floor(Math.random() * maxY);
+
+  popup.style.left = `${randomX}px`;
+  popup.style.top = `${randomY}px`;
+
+  overlay.style.display = "block";
+  popup.style.display = "block";
+}
+
+
+// Captcha func
+// click listener for button
+$("#captcha").click(function(){
+
+    // get value of input field
+    const input = $("#input").val();
+
+    if (input != "DVDirs"){
+        $("#output").html('<div class="text"><p>' + 'Try Again' +'</p></div>');
+        $("#input").val("");
+    } else {
+        $("#input").val("");
+        closeAll();
+    }
+
+});
+
+// Shrink func
+
+document.addEventListener("mousemove", function(e) {
+    const btn = document.getElementById("closeBtn");
+    
+
+    const rect = btn.getBoundingClientRect();
+    const btnCenterX = rect.left + rect.width / 2;
+    const btnCenterY = rect.top + rect.height / 2;
+
+    const dx = e.clientX - btnCenterX;
+    const dy = e.clientY - btnCenterY;
+
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    const minScale = 0.25;
+    const maxScale = 1.5;
+    const threshold = 500; 
+
+    let scale = maxScale;
+    if (distance < threshold) {
+        scale = minScale + ((distance / threshold) * (maxScale - minScale));
+    }
+
+    btn.style.transform = `scale(${scale})`;
+});
+
+
+// ------------------------------------------------------
+
+
+
+

@@ -1,0 +1,53 @@
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.random-popup-box {
+  display: none;
+  
+  position: fixed;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  text-align: center;
+  z-index: 1000;
+  border: 1px solid black;
+}
+
+.close-btn {
+  background: red;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+
+  transition: transform 0.1s linear;
+}
+
+.photo {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 25px;
+}
+
+.links{
+  position: fixed;
+  bottom: 0;
+}
+
+
+
+
+
+
+
