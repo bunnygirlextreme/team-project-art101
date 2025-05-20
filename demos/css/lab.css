@@ -45,6 +45,10 @@
   bottom: 0;
 }
 
+.hover-trigger {
+  cursor: pointer;
+  text-decoration: underline;
+}
 
 
 
