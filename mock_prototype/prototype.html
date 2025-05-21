@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Demo: Creature pop-up</title>
+
+	<link rel="shortcut icon" href="./img/slug.ico"/> 
+
+  	<meta charset="UTF-8" />
+
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/lab.css">
+
+	<script src="js/lab.js" DEFER></script>
+	
+</head>
+<body>
+
+	<main id="content">
+		<section>
+			<h1>Demo: Test</h1>
+
+			 <p> Hover where it says <span class="hover-trigger">Hover</span> to see the popup!</p>    
+
+         
+			
+			 	<div id="popup" class="random-popup-box">
+						<p>Try to exit if you think you can. </p>
+						<h1> 🙈🙈🙈  </h1>
+						<button id="closeBtn" onclick="closeCurrent(this)">Exit</button>
+				</div>
+
+	
+
+				<div id="popup" class="random-popup-box">
+                    <div>
+                        <img src="./img/c2.png" alt = "captcha">
+                    </div>
+
+                    <input  type="text" id="input" placeholder="Type the Characters above">
+                            <button id="captcha">Enter</button>
+                            
+                            <div id="output"></div>
+                </div>
+
+
+				<div id="popup" class="random-popup-box">
+                    <img class="photo" src="./img/mo_shellshock.png" alt="creature" />
+                    <button  onclick= "openSpecificPopup('popup2'); closeCurrent(this); matchPosition('popup2', this);" > Exiting will destroy the creature, are you sure? </button>
+                </div>
+
+            
+                <div id="popup2" class="random-popup-box">
+                    <img class="photo" src="./img/mo_box.png" alt="creature" />
+                    <p>Please Have Mercy!</p>
+                    <button  onclick="closeCurrent(this)"> Click to smite the creature and return. </button>
+                </div>
+
+
+				<div id="popup" class="random-popup-box">
+                 <img class="photo" src="img/dumbcat.jpg" alt="dumbcat" />
+               		<button  onclick="closeCurrent(this)">bye squirrely</button>
+            	</div>
+
+
+			
+			<button onclick="openRandomPopup()">Open Popup</button>
+	
+			<button  onclick="closeAll('popup')"> Close All </button>
+
+            <div class ="links"> 
+                <a href="../index.html">Home</a>
+            </div>
+
+		</section>
+	</main>
+</div>
+</body>
+</html>
