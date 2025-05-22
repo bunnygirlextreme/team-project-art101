@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: sans-serif;
+  background-color: #f0f0f0;
+}
+
+.random-popup-box {
+  display: none;
+  
+  position: fixed;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  text-align: center;
+  z-index: 1000;
+  border: 1px solid black;
+}
+
+.closeBtn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+
+  transition: transform 0.1s linear;
+}
+
+.photo {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 25px;
+}
+
+.links{
+  position: fixed;
+  bottom: 0;
+}
+
+.hover-trigger {
+  cursor: pointer;
+  text-decoration: underline;
+}
