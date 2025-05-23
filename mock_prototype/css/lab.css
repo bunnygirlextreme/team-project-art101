@@ -64,7 +64,7 @@ h2,h3 {
 .random-popup-box {
   display: none;
   
-  position: fixed;
+  position: absolute;
   background: white;
   padding: 20px;
   border-radius: 10px;

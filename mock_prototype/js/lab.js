@@ -14,8 +14,8 @@ function openRandomPopup() {
   // math made using my references
   // used some stack overflow but mostly google ai prompt on google
   // https://stackoverflow.com/questions/17469152/how-can-i-contain-math-random-div-placement-within-window
-  const maxX = window.innerWidth - 400;
-  const maxY = window.innerHeight - 400;
+  const maxX = document.body.scrollWidth - 400;
+  const maxY = document.body.scrollHeight - 400;
   const randomX = Math.floor(Math.random() * maxX);
   const randomY = Math.floor(Math.random() * maxY);
 
@@ -35,8 +35,8 @@ function openSpecificPopup(id) {
   // math made using my references
   // used some stack overflow but mostly google ai prompt on google
   // https://stackoverflow.com/questions/17469152/how-can-i-contain-math-random-div-placement-within-window
-  const maxX = window.innerWidth - 400;
-  const maxY = window.innerHeight - 400;
+  const maxX = document.body.scrollWidth - 400;
+  const maxY = document.body.scrollHeight - 400;
   const randomX = Math.floor(Math.random() * maxX);
   const randomY = Math.floor(Math.random() * maxY);
 
@@ -173,15 +173,14 @@ function startRandomSpawner() {
 startRandomSpawner();
 
 
-// makes ".hover-trigger" spawn a random popup
 document.addEventListener("DOMContentLoaded", function () {
-  // Hover trigger element
-  const hoverTrigger = document.querySelector(".hover-trigger");
+  // Get ALL elements with class .hover-trigger
+  const hoverTriggers = document.querySelectorAll(".hover-trigger");
 
-  if (hoverTrigger) {
-    hoverTrigger.addEventListener("mouseenter", function () {
+  hoverTriggers.forEach(function(trigger) {
+    trigger.addEventListener("mouseenter", function () {
       openRandomPopup();
     });
-  } 
+  });
 });
 
