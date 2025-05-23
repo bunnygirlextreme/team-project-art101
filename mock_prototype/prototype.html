@@ -24,7 +24,13 @@
 			<h1>Demo: Test</h1>
 
 
-			 <p> Hover where it says <span class="hover-trigger">Hover</span> to see the popup!</p>    
+			 <p> Hover where it says <span class="hover-trigger">Hover</span> to see the popup!</p> 
+
+			 <button onclick="openRandomPopup()">Open Popup</button>
+
+			 <button onclick="openHorizontalBorderPopup(); openVerticalBorderPopup()">Open Border Popup</button>
+	
+			<button  onclick="closeAll('popup'); closeAll('fixed-vertical-popup'); closeAll('fixed-horizontal-popup'); "> Close All </button> 
 
          
 			<h1>Climate Forecast 2025: 100% CHANCE of REGRET </h1>
@@ -74,6 +80,7 @@
 			</div>
 
 
+			<!-- Popup section (aslong as you use id "popup" the div can be selected to be spawned) attach functions to the exit button for effects and stuff -->
 			
 			 	<div id="popup" class="random-popup-box">
 						<p>Try to exit if you think you can. </p>
@@ -107,16 +114,27 @@
                     <button  onclick="closeCurrent(this)"> Click to smite the creature and return. </button>
                 </div>
 
+				<div id="fixed-horizontal-popup" class="fixed-popup-box-bottom">
+                    <p>This is fixed to the bottom</p>
+                    <button  onclick="closeCurrent(this)">Exit</button>
+                </div>
 
-				<div id="popup" class="random-popup-box">
-                 <img class="photo" src="img/dumbcat.jpg" alt="dumbcat" />
-               		<button  onclick="closeCurrent(this)">bye squirrely</button>
-            	</div>
+				<div id="fixed-horizontal-popup" class="fixed-popup-box-top">
+                    <p>This is fixed to the top</p>
+                    <button  onclick="closeCurrent(this)">Exit</button>
+                </div>
 
-			
-			<button onclick="openRandomPopup()">Open Popup</button>
-	
-			<button  onclick="closeAll('popup')"> Close All </button>
+				<div id="fixed-vertical-popup" class="fixed-popup-box-left">
+                    <p>This is fixed to the left</p>
+                    <button  onclick="closeCurrent(this)">Exit</button>
+                </div>
+
+				<div id="fixed-vertical-popup" class="fixed-popup-box-right">
+                    <p>This is fixed to the right</p>
+                    <button  onclick="closeCurrent(this)">Exit</button>
+                </div>
+
+
 
             <div class ="links"> 
                 <a href="../index.html">Home</a>

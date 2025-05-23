@@ -3,10 +3,21 @@
 
 
 // ------------------------------------------------------------------------------------------------------
+// Global vars
+// ------------------------------------------------------------------------------------------------------
+
+
+var maxNumPopups = 10;
+
+
+// ------------------------------------------------------------------------------------------------------
 // Popup creation funcs (Not spawners)
 // ------------------------------------------------------------------------------------------------------
 
 function openRandomPopup() {
+
+  // prevents spawning if there are more than maxNumPopups visible
+  if (popupCount() >= maxNumPopups) return;
 
   // returns a random element from all the elements with id 'popup'
   const popup = RandElement('popup');
@@ -48,6 +59,32 @@ function openSpecificPopup(id) {
   popup.style.display = "block";
 }
 
+function openHorizontalBorderPopup() {
+  // prevents spawning if there are more than maxNumPopups visible
+  if (popupCount() >= maxNumPopups) return;
+
+  const popup = RandElement('fixed-horizontal-popup');
+
+  const maxX = window.innerWidth - popup.offsetWidth ;
+
+  popup.style.left = `${Math.random() * maxX}px`;
+
+  popup.style.display = "block";
+}
+
+function openVerticalBorderPopup() {
+  // prevents spawning if there are more than maxNumPopups visible
+  if (popupCount() >= maxNumPopups) return;
+
+  const popup = RandElement('fixed-vertical-popup');
+
+  const maxY = window.innerHeight -  popup.offsetHeight ;
+
+  popup.style.top = `${Math.random() * maxY}px`;
+
+  popup.style.display = "block";
+}
+
 // ------------------------------------------------------------------------------------------------------
 // Helper funcs (use these in other funcs to simplify ur life)
 // ------------------------------------------------------------------------------------------------------
@@ -76,6 +113,16 @@ function matchPosition(popup2, popup1) {
   move.style.top = ref.style.top;
   move.style.left = ref.style.left;
   move.style.display = "block";
+}
+
+// returns how many total popups there are visible
+function popupCount() {
+  const allPopups = document.querySelectorAll('[id="popup"], [id="fixed-horizontal-popup"], [id="fixed-vertical-popup"]');
+  let count = 0;
+  allPopups.forEach(p => {
+    if (p.style.display === "block") count++;
+  });
+  return count;
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -162,15 +209,29 @@ function closeCurrent(element) {
 // 
 function startRandomSpawner() {
   setInterval(() => {
-    // how long to wait before spawning
-    const delay = Math.random() * 3000 + 1000; 
-    setTimeout(openRandomPopup, delay);
+    const delay = Math.random() * 3000 + 1000;
+    setTimeout(() => {
+
+      const funcs = [openRandomPopup(), openHorizontalBorderPopup(),  openVerticalBorderPopup()]
+
+      roulette = Math.floor(Math.random() * 100) % funcs.length;
+      
+      funcs[roulette]();
+
+
+    }, delay);
   }, 2000);
 }
 
 
+
 // Start spawning (comment out if you do not want random spawns)
-startRandomSpawner();
+// Wait 15 seconds before starting the popup spawner
+// Commented out for testing purposes
+//setTimeout(() => {
+  startRandomSpawner();
+//}, 15000); 
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -183,4 +244,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+
 
