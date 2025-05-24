@@ -246,6 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 //----------------------------------------------------------------------------------------
 // Fake Cookie Consent 
+//----------------------------------------------------------------------------------------
 //will reappear every few minutes
 
 function acceptCookies() {
@@ -267,7 +268,7 @@ function showCookiePopup() {
   }
 }
 
-// Show cookie popup after 1 second on page load
+// Show cookie popup after 1 second on page load (this can change if it becomes too overloaded)
 window.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     showCookiePopup();
