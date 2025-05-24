@@ -214,7 +214,7 @@ function startRandomSpawner() {
 
       const funcs = [openRandomPopup(), openHorizontalBorderPopup(),  openVerticalBorderPopup()]
 
-      roulette = Math.floor(Math.random() * 100) % funcs.length;
+      const roulette = Math.floor(Math.random() * 100) % funcs.length;
       
       funcs[roulette]();
 
@@ -244,9 +244,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
 //----------------------------------------------------------------------------------------
 // Fake Cookie Consent 
 //----------------------------------------------------------------------------------------
+
 //will reappear every few minutes
 
 function acceptCookies() {
@@ -260,6 +262,7 @@ function acceptCookies() {
     showCookiePopup();
   }, 15000);
 }
+ 
 
 function showCookiePopup() {
   const cookieBanner = document.getElementById("cookie-consent");
@@ -273,4 +276,4 @@ window.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     showCookiePopup();
   }, 1000);
-});
+})
