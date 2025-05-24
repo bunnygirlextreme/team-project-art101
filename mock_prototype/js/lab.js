@@ -304,5 +304,60 @@ document.getElementById("popupToggle").addEventListener("change", function () {
     closeAll('popup');
     closeAll('fixed-horizontal-popup');
     closeAll('fixed-vertical-popup');
+    closeAll('cookie-consent');
+  }else{
+    showCookiePopup();
   }
+});
+
+//----------------------------------------------------------------------------------------
+// Fake Cookie Consent 
+//----------------------------------------------------------------------------------------
+
+//will reappear every few minutes
+
+function acceptCookies() {
+  const cookieBanner = document.getElementById("cookie-consent");
+  if (cookieBanner) {
+    cookieBanner.style.display = "none";
+  }
+
+  // Reappear after 15 seconds (change as desired)
+  setTimeout(() => {
+    showCookiePopup();
+  }, 15000);
+}
+ 
+
+function showCookiePopup() {
+  if (!allowPopups || popupCount() >= maxNumPopups) return;
+
+  const cookieBanner = document.getElementById("cookie-consent");
+  if (cookieBanner) {
+    cookieBanner.style.display = "block";
+  }
+}
+
+// Show cookie popup after 1 second on page load (this can change if it becomes too overloaded)
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    showCookiePopup();
+  }, 1000);
+})
+
+//deny button now runs away :P
+
+const denyBtn = document.getElementById("deny-btn");
+
+denyBtn.addEventListener("mouseenter", () => {
+  const parent = denyBtn.parentElement;
+  const maxX = parent.offsetWidth - denyBtn.offsetWidth;
+  const maxY = parent.offsetHeight - denyBtn.offsetHeight;
+
+  const randX = Math.random() * maxX;
+  const randY = Math.random() * maxY;
+
+  denyBtn.style.position = "relative";
+  denyBtn.style.left = `${randX}px`;
+  denyBtn.style.top = `${randY}px`;
 });
