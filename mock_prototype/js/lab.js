@@ -11,6 +11,9 @@ var maxNumPopups = 10;
 
 let currentAudio = null;
 
+var allowPopups = false;
+
+
 
 // ------------------------------------------------------------------------------------------------------
 // Popup creation funcs (Not spawners)
@@ -19,7 +22,7 @@ let currentAudio = null;
 function openRandomPopup() {
 
   // prevents spawning if there are more than maxNumPopups visible
-  if (popupCount() >= maxNumPopups) return;
+  if (!allowPopups || popupCount() >= maxNumPopups) return;
 
   // returns a random element from all the elements with id 'popup'
   const popup = RandElement('popup');
@@ -69,7 +72,7 @@ function openSpecificPopup(id) {
 
 function openHorizontalBorderPopup() {
   // prevents spawning if there are more than maxNumPopups visible
-  if (popupCount() >= maxNumPopups) return;
+  if (!allowPopups || popupCount() >= maxNumPopups) return;
 
   const popup = RandElement('fixed-horizontal-popup');
 
@@ -82,7 +85,7 @@ function openHorizontalBorderPopup() {
 
 function openVerticalBorderPopup() {
   // prevents spawning if there are more than maxNumPopups visible
-  if (popupCount() >= maxNumPopups) return;
+  if (!allowPopups || popupCount() >= maxNumPopups) return;
 
   const popup = RandElement('fixed-vertical-popup');
 
@@ -295,3 +298,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.getElementById("popupToggle").addEventListener("change", function () {
+  allowPopups = this.checked;
+  if (!this.checked) {
+    closeAll('popup');
+    closeAll('fixed-horizontal-popup');
+    closeAll('fixed-vertical-popup');
+  }
+});
