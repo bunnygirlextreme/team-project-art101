@@ -1,0 +1,156 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+    background-color: rgb(208, 208, 251);
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #aa1521;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+  font-size: 400%;
+
+}
+
+h2,h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+  font-size: 200%;
+}
+
+
+#Sealevel {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: solid 3px #ffffff;
+    background-color: hsl(216, 100%, 85%);
+    font-size: larger;
+   
+  }
+
+  #Problems {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: solid 3px #ffffff;
+    background-color: hsl(142, 100%, 89%);
+    font-size: larger;
+   
+  }
+
+
+  #Results {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: solid 3px #ffffff;
+    background-color: hsl(203, 100%, 88%);
+    font-size: larger;
+   
+  }
+
+   #Todo {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: solid 3px #ffffff;
+    background-color: hsl(123, 100%, 93%);
+    font-size: larger;
+   
+  }
+
+
+
+
+.random-popup-box {
+  display: none;
+  
+  position: absolute;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  text-align: center;
+  z-index: 1000;
+  border: 1px solid black;
+}
+
+.fixed-popup-box-bottom {
+  position: fixed;
+  background: white;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  display: none;
+  bottom: 0px;
+}
+.fixed-popup-box-top {
+  position: fixed;
+  background: white;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  display: none;
+  top: 0px;
+}
+.fixed-popup-box-right {
+  position: fixed;
+  background: white;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  display: none;
+  right: 0px;
+}
+.fixed-popup-box-left {
+  position: fixed;
+  background: white;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  display: none;
+  left: 0px;
+}
+
+
+
+.closeBtn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+
+  transition: transform 0.1s linear;
+}
+
+.cookie-btn {
+  margin-left: 20px;
+  background-color: #830c8b;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.cookie-btn:hover {
+  background-color: #0b320c;
+}
+
+
+
+
+.photo {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.hover-trigger {
+  cursor: pointer;
+  text-decoration: underline;
+}
+

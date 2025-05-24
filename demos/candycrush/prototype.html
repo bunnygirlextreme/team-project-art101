@@ -15,6 +15,13 @@
     <link rel="stylesheet" type="text/css" href="css/lab.css">
 
 	<script src="js/lab.js" DEFER></script>
+
+     <script src="scripts/app.js" DEFER></script>
+
+
+
+    <link rel="stylesheet" href="styles/style.css">
+    
 	
 </head>
 <body>
@@ -22,6 +29,7 @@
 	<main id="content">
  		<section>
 			<h1>Demo: Test</h1>
+
 
 
 			 <p> Hover where it says <span class="hover-trigger">Hover</span> to see the popup!</p> 
@@ -32,8 +40,7 @@
 	
 			<button  onclick="closeAll('popup'); closeAll('fixed-vertical-popup'); closeAll('fixed-horizontal-popup'); "> Close All </button> 
 
-         
-			<h1>BREAKING: California Coast Set to Sink TOMORROW</h1>
+			<h1>Climate Forecast 2025: 100% CHANCE of REGRET </h1>
 
 			<div id="Sealevel">
 					<h2>“Water You Doing?”-Sea Levels, Climate Change, and Why We Should Care </h2>
@@ -79,80 +86,38 @@
 					
 			</div>
 
+      
+
+            
 
 			<!-- Popup section (aslong as you use id "popup" the div can be selected to be spawned) attach functions to the exit button for effects and stuff -->
 			
-			 	<div id="popup" class="random-popup-box">
-						<p>Try to exit if you think you can. </p>
-						<h1> 🙈🙈🙈  </h1>
-						<button id="closeBtn" onclick="closeCurrent(this)">Exit</button>
-				</div>
 
-	
-
-				<div id="popup" class="random-popup-box">
-                    <div>
-                        <img src="./img/c2.png" alt = "captcha">
-                    </div>
-
-                    <input  type="text" id="input" placeholder="Type the Characters above">
-                            <button id="captcha">Enter</button>
-                            
-                            <div id="output"></div>
-                </div>
-
-
-				<div id="popup" class="random-popup-box">
-                    <img class="photo" src="./img/mo_shellshock.png" alt="creature" />
-                    <button  onclick= "openSpecificPopup('popup2'); closeCurrent(this); matchPosition('popup2', this);" > Exiting will destroy the creature, are you sure? </button>
-                </div>
 
             
-                <div id="popup2" class="random-popup-box">
-                    <img class="photo" src="./img/mo_box.png" alt="creature" />
-                    <p>Please Have Mercy!</p>
-                    <button  onclick="closeCurrent(this)"> Click to smite the creature and return. </button>
-                </div>
-<!--
-                <div id="popup-door" class="random-popup-box">
-                    <img class="photo" src="./img/door.png" alt="door" />
-                    <button id="closeBtn" onclick="closeCurrent(this)">x</button>
-                </div>
-            -->
-                <div id="popup" class="random-popup-box" data-onopen="doorSound">
-                    <img class="photo" src="./img/door.png" alt="door" />
 
-                    <button id="closeBtn" onclick="closeCurrent(this);">x</button>
-                </div>
-                
-				<div id="fixed-horizontal-popup" class="fixed-popup-box-bottom">
-                    <p>This is fixed to the bottom</p>
-                    <button  onclick="closeCurrent(this)">Exit</button>
-                </div>
-
-				<div id="fixed-horizontal-popup" class="fixed-popup-box-top">
-                    <p>This is fixed to the top</p>
-                    <button  onclick="closeCurrent(this)">Exit</button>
-                </div>
-
-				<div id="fixed-vertical-popup" class="fixed-popup-box-left">
-                    <p>This is fixed to the left</p>
-                    <button  onclick="closeCurrent(this)">Exit</button>
-                </div>
-
-				<div id="fixed-vertical-popup" class="fixed-popup-box-right">
-                    <p>This is fixed to the right</p>
-                    <button  onclick="closeCurrent(this)">Exit</button>
-                </div>
+            <div id="popup" class = "random-popup-box">
 
                 
-                <div id="cookie-consent" class="fixed-popup-box-bottom">
-                    <p>
-                    This site uses cookies to make your life better :)
-                    <button onclick="acceptCookies()" class="cookie-btn">Accept</button>
-                    <button id="deny-btn" class="cookie-btn">Deny</button>
-                    </p>
-                </div>
+                <button id="play" onclick= "openSpecificPopup('candy'); closeCurrent(this); matchPosition('candy', this);">PLAY</button>
+				
+			</div>
+
+
+             <div id="candy" class = "candycrush">
+                  
+                          
+
+                            <div class="score-board">
+                            
+                          
+                            <p id="score" style="font-size: 125%; color: #fbefef; font-weight: bold;">  </p>
+                            </div>
+                            
+
+                            <div class="grid"></div>	
+			</div>
+
 
 
             <div class ="links"> 

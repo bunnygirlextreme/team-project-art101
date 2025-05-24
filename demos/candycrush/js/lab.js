@@ -9,8 +9,6 @@
 
 var maxNumPopups = 10;
 
-let currentAudio = null;
-
 
 // ------------------------------------------------------------------------------------------------------
 // Popup creation funcs (Not spawners)
@@ -38,12 +36,6 @@ function openRandomPopup() {
 
   // displays popup
   popup.style.display = "block";
-
-
-  // on popup open function calls
-  const func = popup.dataset.onopen;
-  window[func](popup); 
-  
 }
 
 // takes in an id string ex: 'popup2'
@@ -133,47 +125,6 @@ function popupCount() {
   return count;
 }
 
-// audio handler
-function audioWhileVisible(popupElement, filePath, loop = false, delay = 0, ) {
-
-  setTimeout(() => {
-  
-    // If there's already an audio playing, stop it
-    if (currentAudio) {
-      currentAudio.pause(); // Stop the current audio
-      currentAudio.currentTime = 0; // Reset the audio to the start
-    }
-
-    // Create and play the new audio
-    currentAudio = new Audio(filePath);
-    currentAudio.loop = loop;
-    currentAudio.play()
-      .catch(error => {
-        console.log("Error playing sound:", error);
-      });
-
-  }, delay); 
-      
-  // checks if popup is closed and makes sure to pause audio
-  const interval = setInterval(() => {
-    if (popupElement.style.display !== "block") {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-      clearInterval(interval);
-    }
-  }, 500); 
-
-}
-
-// function should be called on data-onopen
-// manually set parameters
-// this is a wrapper
-// parameters: popupElement , the file path (should be ./sounds/____) , true/false (whether you want audio to constantly loop), delay (ex: 15000 is 15 seconds)
-function doorSound(popupElement) {
-  audioWhileVisible(popupElement, "./sounds/doorknock.mp3", true, 0);
-}
-
-
 // ------------------------------------------------------------------------------------------------------
 // Specific effect funcs (ex: shrink button, captcha, etc)
 // ------------------------------------------------------------------------------------------------------
@@ -261,9 +212,9 @@ function startRandomSpawner() {
     const delay = Math.random() * 3000 + 1000;
     setTimeout(() => {
 
-      const funcs = [openRandomPopup, openHorizontalBorderPopup,  openVerticalBorderPopup]
+      const funcs = [openRandomPopup(), openHorizontalBorderPopup(),  openVerticalBorderPopup()]
 
-      roulette = Math.floor(Math.random() * 100) % funcs.length;
+      const roulette = Math.floor(Math.random() * 100) % funcs.length;
       
       funcs[roulette]();
 
@@ -278,7 +229,7 @@ function startRandomSpawner() {
 // Wait 15 seconds before starting the popup spawner
 // Commented out for testing purposes
 //setTimeout(() => {
-  startRandomSpawner();
+
 //}, 15000); 
 
 
@@ -294,4 +245,52 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//----------------------------------------------------------------------------------------
+// Fake Cookie Consent 
+//----------------------------------------------------------------------------------------
 
+//will reappear every few minutes
+
+function acceptCookies() {
+  const cookieBanner = document.getElementById("cookie-consent");
+  if (cookieBanner) {
+    cookieBanner.style.display = "none";
+  }
+
+  // Reappear after 15 seconds (change as desired)
+  setTimeout(() => {
+    showCookiePopup();
+  }, 15000);
+}
+ 
+
+function showCookiePopup() {
+  const cookieBanner = document.getElementById("cookie-consent");
+  if (cookieBanner) {
+    cookieBanner.style.display = "block";
+  }
+}
+
+// Show cookie popup after 1 second on page load (this can change if it becomes too overloaded)
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    showCookiePopup();
+  }, 1000);
+})
+
+//deny button now runs away :P
+
+const denyBtn = document.getElementById("deny-btn");
+
+denyBtn.addEventListener("mouseenter", () => {
+  const parent = denyBtn.parentElement;
+  const maxX = parent.offsetWidth - denyBtn.offsetWidth;
+  const maxY = parent.offsetHeight - denyBtn.offsetHeight;
+
+  const randX = Math.random() * maxX;
+  const randY = Math.random() * maxY;
+
+  denyBtn.style.position = "relative";
+  denyBtn.style.left = `${randX}px`;
+  denyBtn.style.top = `${randY}px`;
+});
