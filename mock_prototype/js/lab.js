@@ -244,6 +244,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+//----------------------------------------------------------------------------------------
+// Fake Cookie Consent 
+//will reappear every few minutes
 
+function acceptCookies() {
+  const cookieBanner = document.getElementById("cookie-consent");
+  if (cookieBanner) {
+    cookieBanner.style.display = "none";
+  }
 
+  // Reappear after 15 seconds (change as desired)
+  setTimeout(() => {
+    showCookiePopup();
+  }, 15000);
+}
 
+function showCookiePopup() {
+  const cookieBanner = document.getElementById("cookie-consent");
+  if (cookieBanner) {
+    cookieBanner.style.display = "block";
+  }
+}
+
+// Show cookie popup after 1 second on page load
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    showCookiePopup();
+  }, 1000);
+});
