@@ -277,3 +277,20 @@ window.addEventListener("DOMContentLoaded", () => {
     showCookiePopup();
   }, 1000);
 })
+
+//deny button now runs away :P
+
+const denyBtn = document.getElementById("deny-btn");
+
+denyBtn.addEventListener("mouseenter", () => {
+  const parent = denyBtn.parentElement;
+  const maxX = parent.offsetWidth - denyBtn.offsetWidth;
+  const maxY = parent.offsetHeight - denyBtn.offsetHeight;
+
+  const randX = Math.random() * maxX;
+  const randY = Math.random() * maxY;
+
+  denyBtn.style.position = "relative";
+  denyBtn.style.left = `${randX}px`;
+  denyBtn.style.top = `${randY}px`;
+});
