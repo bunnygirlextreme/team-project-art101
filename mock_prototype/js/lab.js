@@ -9,6 +9,25 @@
 
 var maxNumPopups = 10;
 
+//fix on random selection
+
+function RandElement() {
+  const normalPopups = Array.from(document.querySelectorAll('[id="popup"]'));
+  const doorPopups = Array.from(document.querySelectorAll('[id="popup-door"]'));
+
+  const doorPopupChance = 0.05; //made a low chance bc this shit was getting annoying
+
+  if (Math.random() < doorPopupChance && doorPopups.length > 0) {
+    const randomIndex = Math.floor(Math.random() * doorPopups.length);
+    return doorPopups[randomIndex];
+  } else if (normalPopups.length > 0) {
+    const randomIndex = Math.floor(Math.random() * normalPopups.length);
+    return normalPopups[randomIndex];
+  } else {
+    // fallback, if no popups found
+    return null;
+  }
+}
 
 // ------------------------------------------------------------------------------------------------------
 // Popup creation funcs (Not spawners)
@@ -20,7 +39,7 @@ function openRandomPopup() {
   if (popupCount() >= maxNumPopups) return;
 
   // returns a random element from all the elements with id 'popup'
-  const popup = RandElement('popup');
+  const popup = RandElement();
 
   // math made using my references
   // used some stack overflow but mostly google ai prompt on google
@@ -36,6 +55,10 @@ function openRandomPopup() {
 
   // displays popup
   popup.style.display = "block";
+
+  if (popup.id === 'popup-door') {
+    playPopupSound(popup); //sound for the door pop-up
+  }
 }
 
 // takes in an id string ex: 'popup2'
@@ -91,7 +114,7 @@ function openVerticalBorderPopup() {
 
 // takes an id as input (string) 
 // randomly chooses one of the ids matching the input and return its
-function RandElement(id) {
+function RandElementID(id) {
   // creates array of all elements matching id
   // indexes array randomly and returns a random element of matching id
   const elements = document.querySelectorAll(`[id="${id}"]`);
@@ -197,7 +220,11 @@ function closeAll(id) {
 // closes popup matching element
 // I recommend using closeCurrent(this)
 function closeCurrent(element) {
-  const id = element.parentElement
+  const id = element.parentElement;if (popup.id === 'popup-door' && currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
+
   id.style.display = "none";
 }
 
@@ -279,7 +306,6 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 //deny button now runs away :P
-
 const denyBtn = document.getElementById("deny-btn");
 
 denyBtn.addEventListener("mouseenter", () => {
@@ -294,3 +320,25 @@ denyBtn.addEventListener("mouseenter", () => {
   denyBtn.style.left = `${randX}px`;
   denyBtn.style.top = `${randY}px`;
 });
+
+//--------------------------------------------------------
+// Sound for (Door Pop -Up)
+//-----------------------------------------------------
+let currentAudio = null;
+
+function playPopupSound(popup) {
+  if (popup.id === 'popup-door') {
+    // If there's already an audio playing, stop it
+    if (currentAudio) {
+      currentAudio.pause(); // Stop the current audio
+      currentAudio.currentTime = 0; // Reset the audio to the start
+    }
+
+    // Create and play the new audio
+    currentAudio = new Audio('./sounds/doorknock.mp3');
+    currentAudio.play()
+      .catch(error => {
+        console.log("Error playing sound:", error);
+      });
+  }
+}
