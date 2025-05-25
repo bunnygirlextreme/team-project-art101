@@ -175,7 +175,7 @@ function audioWhileVisible(popupElement, filePath, loop = false, delay = 0, ) {
 // this is a wrapper
 // parameters: popupElement , the file path (should be ./sounds/____) , true/false (whether you want audio to constantly loop), delay (ex: 15000 is 15 seconds)
 function doorSound(popupElement) {
-  audioWhileVisible(popupElement, "./sounds/doorknock.mp3", true, 0);
+  audioWhileVisible(popupElement, "./sounds/doorknock.mp3", false, 0);
 }
 
 

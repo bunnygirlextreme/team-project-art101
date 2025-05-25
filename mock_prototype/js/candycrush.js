@@ -1,4 +1,5 @@
-
+// Not my code, code from:
+// credit: https://github.com/vishalsingh2972/JS-CandyCrushSaga
 
 function startCandyCrushGame() {
   const grid = document.querySelector('.grid');
