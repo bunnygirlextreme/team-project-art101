@@ -19,13 +19,18 @@ var allowPopups = false;
 // Popup creation funcs (Not spawners)
 // ------------------------------------------------------------------------------------------------------
 
-function openRandomPopup() {
+
+// takes in an id string ex: 'popup2'
+// opens it randomly on the page
+function popupOpener(id = "popup", display = "block", delay = 0) {
 
   // prevents spawning if there are more than maxNumPopups visible
   if (!allowPopups || popupCount() >= maxNumPopups) return;
 
-  // returns a random element from all the elements with id 'popup'
-  const popup = RandElement('popup');
+  // obtains specific element id of the id taken as input
+  const popup = RandElement(id);
+
+  if (!popup) return;
 
   // math made using my references
   // used some stack overflow but mostly google ai prompt on google
@@ -40,37 +45,23 @@ function openRandomPopup() {
   popup.style.top = `${randomY}px`;
 
   // displays popup
-  popup.style.display = "block";
+  popup.style.display = display;
+
+  if(delay != 0){
+  setTimeout(() => {
+    popup.style.display = "none";
+    popup.dataset.active = "false";
+  }, delay);
+  }
 
 
   // on popup open function calls
   const func = popup.dataset.onopen;
-  window[func](popup); 
+  if(func) window[func](popup); 
   
 }
 
-// takes in an id string ex: 'popup2'
-// opens it randomly on the page
-function openSpecificPopup(id) {
-  // obtains specific element id of the id taken as input
-  const popup = document.getElementById(id);
-  // math made using my references
-  // used some stack overflow but mostly google ai prompt on google
-  // https://stackoverflow.com/questions/17469152/how-can-i-contain-math-random-div-placement-within-window
-  const maxX = document.body.scrollWidth - 400;
-  const maxY = document.body.scrollHeight - 400;
-  const randomX = Math.floor(Math.random() * maxX);
-  const randomY = Math.floor(Math.random() * maxY);
-
-  // location of popup
-  popup.style.left = `${randomX}px`;
-  popup.style.top = `${randomY}px`;
-
-  // displays popup
-  popup.style.display = "block";
-}
-
-function openHorizontalBorderPopup() {
+function openHorizontalBorderPopup(display = "block") {
   // prevents spawning if there are more than maxNumPopups visible
   if (!allowPopups || popupCount() >= maxNumPopups) return;
 
@@ -80,10 +71,10 @@ function openHorizontalBorderPopup() {
 
   popup.style.left = `${Math.random() * maxX}px`;
 
-  popup.style.display = "block";
+  popup.style.display = display;
 }
 
-function openVerticalBorderPopup() {
+function openVerticalBorderPopup(display = "block") {
   // prevents spawning if there are more than maxNumPopups visible
   if (!allowPopups || popupCount() >= maxNumPopups) return;
 
@@ -93,7 +84,7 @@ function openVerticalBorderPopup() {
 
   popup.style.top = `${Math.random() * maxY}px`;
 
-  popup.style.display = "block";
+  popup.style.display = display;
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -102,12 +93,23 @@ function openVerticalBorderPopup() {
 
 // takes an id as input (string) 
 // randomly chooses one of the ids matching the input and return its
-function RandElement(id) {
+function RandElement(id, repeatFlag = true) {
   // creates array of all elements matching id
   // indexes array randomly and returns a random element of matching id
-  const elements = document.querySelectorAll(`[id="${id}"]`);
-  const randomIndex = Math.floor(Math.random() * elements.length);
-  const randomElement = elements[randomIndex];
+  const elements = Array.from(document.querySelectorAll(`[id="${id}"]`));
+
+  let unactiveElements;
+  if (repeatFlag) {
+    unactiveElements = elements.filter(element => element.dataset.active !== "true");
+  } else {
+    unactiveElements = elements;
+  }
+
+  if (unactiveElements.length === 0) return;
+
+  const randomIndex = Math.floor(Math.random() * unactiveElements.length);
+  const randomElement = unactiveElements[randomIndex];
+  randomElement.dataset.active = "true";
   return randomElement;
 }
 
@@ -194,7 +196,7 @@ $("#captcha").click(function(){
         $("#input").val("");
     } else {
         $("#input").val("");
-        closeCurrent(this);
+        closeThis(this);
     }
 
 });
@@ -240,17 +242,28 @@ function closeAll(id) {
   // iterates through all popups matching the input id 
   const elements = document.querySelectorAll(`[id="${id}"]`);
   for (i = 0; i < elements.length; i++) {
-    popup = elements[i];
+    const popup = elements[i];
     // closes popup at index i
     popup.style.display = "none";
+    // sets flag for the popup to not be repeated
+    popup.dataset.active = "false";
+}
 } 
+
+// closes popup matching id
+function closeId(id) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.style.display = "none";
+    element.dataset.active = "false";
+  }
 }
 
-// closes popup matching element
-// I recommend using closeCurrent(this)
-function closeCurrent(element) {
-  const id = element.parentElement
+// closes parent popup if you use this as parameter
+function closeThis(element = this){
+  const id = element.parentElement;
   id.style.display = "none";
+  id.dataset.active = "false";
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -258,21 +271,28 @@ function closeCurrent(element) {
 // ------------------------------------------------------------------------------------------------------
 
 // Random interval generator
-// 
 function startRandomSpawner() {
   setInterval(() => {
-    const delay = Math.random() * 3000 + 1000;
+    const delay = Math.random() *  100;//3000 + 1000;
     setTimeout(() => {
-
-      const funcs = [openRandomPopup, openHorizontalBorderPopup,  openVerticalBorderPopup]
-
-      roulette = Math.floor(Math.random() * 100) % funcs.length;
-      
-      funcs[roulette]();
-
-
+      roulette();
     }, delay);
   }, 2000);
+}
+
+function roulette(){
+      const funcs = [
+        () => popupOpener(),                       
+        () => openHorizontalBorderPopup(),        
+        () => openVerticalBorderPopup(),  
+        () => popupOpener("candy","flex")
+      //  () => nicePopupOpener(popupName, display type ex: flex,block,etc)  
+      // make sure both args in parenthesis   
+      ];
+
+      let index = Math.floor(Math.random() * 1000) % funcs.length;
+      
+      funcs[index]();
 }
 
 
@@ -292,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   hoverTriggers.forEach(function(trigger) {
     trigger.addEventListener("mouseenter", function () {
-      openRandomPopup();
+      roulette();
     });
   });
 });

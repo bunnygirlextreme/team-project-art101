@@ -1,11 +1,6 @@
 
 
-
-
-
-
-
-document.addEventListener('DOMContentLoaded',() => {
+function startCandyCrushGame() {
   const grid = document.querySelector('.grid');
   const scoreDisplay = document.getElementById('score');
   const width = 8;
@@ -17,19 +12,19 @@ document.addEventListener('DOMContentLoaded',() => {
   // const audio3 = new Audio('audio/s3.mp3');
   // const audio4 = new Audio('audio/s4.mp3');
   const audios = [
-    new Audio('audio/s1.mp3'),
-    new Audio('audio/s2.mp3'),
-    new Audio('audio/s3.mp3'),
-    new Audio('audio/s4.mp3'),
+    new Audio('sounds/s1.mp3'),
+    new Audio('sounds/s2.mp3'),
+    new Audio('sounds/s3.mp3'),
+    new Audio('sounds/s4.mp3'),
   ];
 
   const candyColors = [
-    'url(images/red-candy.png)',
-    'url(images/blue-candy.png)',
-    'url(images/green-candy.png)',
-    'url(images/orange-candy.png)',
-    'url(images/yellow-candy.png)',
-    'url(images/purple-candy.png)'
+    'url(img/candycrush/red-candy.png)',
+    'url(img/candycrush/blue-candy.png)',
+    'url(img/candycrush/green-candy.png)',
+    'url(img/candycrush/orange-candy.png)',
+    'url(img/candycrush/yellow-candy.png)',
+    'url(img/candycrush/purple-candy.png)'
   ];
 
 //Create Board
@@ -238,4 +233,4 @@ document.addEventListener('DOMContentLoaded',() => {
     checkColumnForThree();
   }, 100);
 
-  })
+  }
