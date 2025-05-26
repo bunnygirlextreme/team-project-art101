@@ -162,3 +162,81 @@ h2,h3 {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.x-button {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+
+.candycrush {
+  position: absolute;
+  width: 427px;
+  height: 510px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 20px;
+  background-image: url('../img/candycrush/candy-crush-background.png');
+  background-size: cover;
+  background-repeat: no-repeat;  
+}
+
+.grid {
+  width: 420px; 
+  height: 420px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(109, 127, 151, 0.5);
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 1px 0 #fff;
+  color: #85796b;
+  overflow: hidden;
+}
+
+.grid div {
+  width: 52.5px; 
+  height: 52.5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.invisible {
+  background-color: white;
+}
+
+.score-board {
+background-color: pink;
+border-radius: 10px;
+min-width: 50px;
+width: 420px;
+justify-content: center;
+display: flex;
+padding: 5px;
+background-image: linear-gradient(#FFB6C1, #FFC0CB);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #fff;
+color: rgb(255, 255, 255);
+box-shadow: inset 0 -3em 3em #f37d8f;
+border: 2px solid #d76f7e;
+}
+
+
+

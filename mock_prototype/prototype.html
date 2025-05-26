@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="css/lab.css">
 
 	<script src="js/lab.js" DEFER></script>
+
+    <script src="js/candycrush.js" DEFER></script>
 	
 </head>
 <body>
@@ -32,11 +34,13 @@
 	
 			<button  onclick="closeAll('popup'); closeAll('fixed-vertical-popup'); closeAll('fixed-horizontal-popup'); "> Close All </button> 
 
-            <div id="header">
-			    <div id="title">
-                    <h1>BREAKING: California Coast Set to Sink TOMORROW</h1>
-                </div>
-            </div>
+            <label>
+                <input type="checkbox" id="popupToggle" unchecked>
+                Allow Popups
+            </label>
+
+         
+			<h1>BREAKING: California Coast Set to Sink TOMORROW</h1>
 
 			<div id="Sealevel">
 					<h2>“Water You Doing?”-Sea Levels, Climate Change, and Why We Should Care </h2>
@@ -88,10 +92,32 @@
 			 	<div id="popup" class="random-popup-box">
 						<p>Try to exit if you think you can. </p>
 						<h1> 🙈🙈🙈  </h1>
-						<button id="closeBtn" onclick="closeCurrent(this)">Exit</button>
+						<button id="closeBtn" onclick="closeThis(this)">Exit</button>
 				</div>
 
 	
+                <div id="candy" class = "candycrush" style = "display:none;">
+                    <button  style="animation: pulse 1s infinite; background: none; border: none; cursor:pointer" type="image" onclick= "popupOpener('c2');  matchPosition('c2', this); startCandyCrushGame();">
+                        <img class = "photo"  style = "position:relative; top: 110px"src="img/play_now.png"  />
+                    </button>
+
+                    <img style = "position:relative; pointer-events: none; width: 700px; bottom: 40px; left: 80px" src="img/finger.png"  />
+                        <div style="position:relative; font-size: 30px; font-weight: bold; color: #ff00cc; text-shadow: 2px 2px 0px white; bottom: 530px"> Beat This Level To Win! </div>
+                        <div style="position:relative; font-size: 18px; color: #444; bottom: 535px ">Only 3% of players succeed!</div>
+                        <div style="position:relative; font-size: 30px; font-weight: bold; color: green; text-shadow: 2px 2px 0px white; bottom: 160px;">🟢 14,362 players online now</div>
+                </div>
+
+                <div id = "c2" class = "candycrush" style="display:none; ">
+                                <div class="score-board">
+                                <p id="score" style="font-size: 125%; color: #fbefef; font-weight: bold;"> 0 </p>
+                                </div>
+                                <div class="grid"></div>	
+
+                                <button class="x-button" onclick= "closeThis(this); closeId('candy')">x</button>
+                                <p style=" position:relative; bottom: 8px;"> credit: <a target="_blank" href="https://github.com/vishalsingh2972/JS-CandyCrushSaga">Source</a></p>
+                                
+                                
+                </div>
 
 				<div id="popup" class="random-popup-box">
                     <div>
@@ -107,42 +133,42 @@
 
 				<div id="popup" class="random-popup-box">
                     <img class="photo" src="./img/mo_shellshock.png" alt="creature" />
-                    <button  onclick= "openSpecificPopup('popup2'); closeCurrent(this); matchPosition('popup2', this);" > Exiting will destroy the creature, are you sure? </button>
+                    <button  onclick= "popupOpener('popup2'); closeThis(this); matchPosition('popup2', this);" > Exiting will destroy the creature, are you sure? </button>
                 </div>
 
             
                 <div id="popup2" class="random-popup-box">
                     <img class="photo" src="./img/mo_box.png" alt="creature" />
                     <p>Please Have Mercy!</p>
-                    <button  onclick="closeCurrent(this)"> Click to smite the creature and return. </button>
-                </div>
-                
-                <div id="popup-door" class="random-popup-box">
-                    <img class="photo" src="./img/door.png" alt="door" />
-                    <button id="closeBtn" onclick="closeCurrent(this)">x</button>
+                    <button  onclick="closeThis(this)"> Click to smite the creature and return. </button>
                 </div>
 
+                <div id="popup" class="random-popup-box" data-onopen="doorSound">
+                    <img class="photo" src="./img/door.png" alt="door" />
+
+                    <button id="closeBtn" onclick="closeThis(this);">x</button>
+                </div>
+                
 				<div id="fixed-horizontal-popup" class="fixed-popup-box-bottom">
                     <p>This is fixed to the bottom</p>
-                    <button  onclick="closeCurrent(this)">Exit</button>
+                    <button  onclick="closeThis(this)">Exit</button>
                 </div>
 
 				<div id="fixed-horizontal-popup" class="fixed-popup-box-top">
                     <p>This is fixed to the top</p>
-                    <button  onclick="closeCurrent(this)">Exit</button>
+                     <button  onclick="closeThis(this)">Exit</button>
                 </div>
 
 				<div id="fixed-vertical-popup" class="fixed-popup-box-left">
                     <p>This is fixed to the left</p>
-                    <button  onclick="closeCurrent(this)">Exit</button>
+                     <button  onclick="closeThis(this)">Exit</button>
                 </div>
 
 				<div id="fixed-vertical-popup" class="fixed-popup-box-right">
                     <p>This is fixed to the right</p>
-                    <button  onclick="closeCurrent(this)">Exit</button>
+                     <button  onclick="closeThis(this)">Exit</button>
                 </div>
 
-                
                 <div id="cookie-consent" class="fixed-popup-box-bottom">
                     <p>
                     This site uses cookies to make your life better :)
