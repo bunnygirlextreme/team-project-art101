@@ -15,6 +15,16 @@ h1 {
 
 }
 
+#header {
+  background-color: white;
+  padding: 5px;
+}
+
+#title {
+  background-color:hsl(142, 100%, 89%);
+  padding: 3px;
+}
+
 h2,h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
