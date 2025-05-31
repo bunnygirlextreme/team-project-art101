@@ -239,4 +239,173 @@ border: 2px solid #d76f7e;
 }
 
 
+.bigger-popup-box {
+  display: none;
+  position: absolute;
+
+  background: linear-gradient(to bottom right, #ffe5f8, #fff1e0);
+  color: #4a1f3d;
+  padding: 24px;
+  border-radius: 30px;
+  border: 4px solid #ff69b4;
+  box-shadow: 0 12px 30px rgba(255, 105, 180, 0.4), 0 0 20px #ffb6c1 inset;
+
+
+  text-align: center;
+
+  max-width: 500px;
+
+
+
+
+  width: 90%;
+  z-index: 10000;
+
+  animation: popBounce 0.5s ease-out;
+  transform-origin: center center;
+  position: absolute;
+}
+
+.bigger-popup-box button {
+  display: block;
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px 20px;
+
+  background: linear-gradient(to right, #ff69b4, #ff1493);
+  border: 3px solid #fff;
+  border-radius: 50px;
+
+  color: white;
+  font-weight: 900;
+  font-size: 18px;
+  text-shadow: 0 1px 2px black;
+  box-shadow: 0 6px 14px rgba(255, 20, 147, 0.5);
+
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bigger-popup-box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 20, 147, 0.7);
+}
+
+.bigger-popup-box img.large-photo {
+  width: 100%;
+  border-radius: 16px;
+  border: 3px solid #ff69b4;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+@keyframes popBounce {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.scary-popup-box {
+  display: none;
+  position: absolute;
+  background: #300f0f; 
+  color: white; 
+  padding: 20px 20px;
+  border-radius: 12px;
+  max-width: 300px;
+  text-align: center;
+  z-index: 1000;
+  border: 2px solid #8b0000;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.8);
+  animation: floatCreep 1.8s ease-out, pulseShadow 2s infinite alternate;
+}
+
+.scary-popup-box img.photo {
+  border: 2px solid #5c0000;
+  border-radius: 5px;
+  box-shadow: 0 0 12px rgba(139, 0, 0, 0.6);
+}
+
+.scary-popup-box button {
+  background-color: #3b0000;
+  color: white;
+  border: 1px solid #990000;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  max-width: 250px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(200, 0, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+.scary-popup-box button:hover {
+  background-color: #8b0000;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+@keyframes floatCreep {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulseShadow {
+  0% {
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+  }
+}
+
+
+
+
+
+
+.taunt-popup-box {
+  display: none;
+  position: absolute;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  text-align: center;
+  z-index: 1000;
+  border: 1px solid black;
+}
+
+.taunt-popup-box p {
+  animation: wiggle 1s infinite;
+}
+
+.taunt-popup-box h1 {
+  margin: 8px 0;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
 
