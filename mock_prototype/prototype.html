@@ -34,11 +34,12 @@
 	
 			<button  onclick="closeAll('popup'); closeAll('fixed-vertical-popup'); closeAll('fixed-horizontal-popup'); "> Close All </button> 
 
+<!--
             <label>
                 <input type="checkbox" id="popupToggle" unchecked>
                 Allow Popups
             </label>
-
+-->
          
 			<h1>BREAKING: California Coast Set to Sink TOMORROW</h1>
 
@@ -89,10 +90,10 @@
 
 			<!-- Popup section (aslong as you use id "popup" the div can be selected to be spawned) attach functions to the exit button for effects and stuff -->
 			
-			 	<div id="popup" class="random-popup-box">
+			 	<div id="popup" class="taunt-popup-box">
 						<p>Try to exit if you think you can. </p>
 						<h1> 🙈🙈🙈  </h1>
-						<button id="closeBtn" onclick="closeThis(this)">Exit</button>
+						<button id="closeBtn" class = "closeBtn" onclick="closeThis(this)">Exit</button>
 				</div>
 
 	
@@ -131,17 +132,95 @@
                 </div>
 
 
-				<div id="popup" class="random-popup-box">
+				<div id="mo1" class="scary-popup-box">
                     <img class="photo" src="./img/mo_shellshock.png" alt="creature" />
-                    <button  onclick= "popupOpener('popup2'); closeThis(this); matchPosition('popup2', this);" > Exiting will destroy the creature, are you sure? </button>
+                    <button  onclick= "popupOpener('mo2');  matchPosition('mo2', this); closeThis(this);" > Exiting will destroy the creature, are you sure? </button>
                 </div>
-
-            
-                <div id="popup2" class="random-popup-box">
+                <div id="mo2" class="scary-popup-box">
                     <img class="photo" src="./img/mo_box.png" alt="creature" />
                     <p>Please Have Mercy!</p>
-                    <button  onclick="closeThis(this)"> Click to smite the creature and return. </button>
+                    <button  onclick="plea(this)"> Click to smite the creature and return. </button>
                 </div>
+
+
+                <div id="story1" class="bigger-popup-box"  >
+                    <img  src="./img/story/1.webp"  />
+                    <button  onclick= "popupOpener('story2'); closeThis(this); matchPosition('story2', this);" > Play Now </button>
+                </div>
+                <div id="story2" class="bigger-popup-box" style = "z-index: 10000000">
+                    <img class = "large-photo" src="./img/story/2.jpeg" />
+                    <p>You are adventuring and spot two odd creatures, what do you do?</p>
+                    <button  onclick= "popupOpener('story3'); closeThis(this); matchPosition('story3', this);" > Aproach </button>
+                    <button  onclick= " popupOpener('story4'); matchPosition('story4', this);   death(this);" > Flee </button>
+                </div>
+                <div id="story4" class="scary-popup-box" >
+                    <img class = "photo" src="./img/story/s4.png" style = "z-index: 1" />
+                    <button   onclick= "closeThis(this);" > Accept your fate.</button>
+                </div>
+                <div id="story3" class="bigger-popup-box" style = "z-index: 10000000">
+                    <img class = "large-photo" src="./img/story/s3.jpeg" />
+                    <p> You are offered a quest, what do you do?</p>
+                    <button  onclick= "popupOpener('story5'); matchPosition('story5', this);   closeThis(this)" > Trade </button>
+                    <button  onclick= " popupOpener('story6'); matchPosition('story6', this);   closeThis(this)" > Accept Quest </button>
+                </div>
+                <div id="story5" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s5.png" />
+                    <p>You can't afford anything</p>
+                    <button   onclick= "popupOpener('story3'); closeThis(this); matchPosition('story3', this); " >Leave in shame.</button>
+                </div>
+                <div id="story6" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s6.png" />
+                    <p>You are tasked with locating the mystical item churu. Where do you check first?</p>
+                    <button  onclick= "popupOpener('story7'); matchPosition('story7', this);   closeThis(this)" > House Next Door   </button>
+                    <button  onclick= " popupOpener('story10'); matchPosition('story10', this);   closeThis(this)" > Goblin Den </button>
+                </div>
+                <div id="story7" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s7.png" />
+                    <p> You are greeted with a very unfriendly looking fellow. What do you do!?</p>
+                    <button  onclick= "popupOpener('story8'); matchPosition('story8', this);   closeThis(this)" > Ask nicely if he has clues regarding the mystical item   </button>
+                    <button  onclick= " popupOpener('story8'); matchPosition('story8', this);   closeThis(this)" > Demand he cough the goods up </button>
+                </div>
+                <div id="story8" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s8.png" />
+                    <p> Suddenly a loud bang resounds in the background, and the individual flies into a rage.</p>
+                     <button  onclick= " popupOpener('story9'); matchPosition('story9', this);   closeThis(this)" > Chase after! You need that damn churu</button>
+                </div>
+                <div id="story9" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s9.png" />
+                    <button   onclick= "closeThis(this); " >  You have finished the free trial. Download now to play! </button>
+                </div>
+                <div id="story10" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s10.jpeg" />
+                    <p> You encounter an absolutely revolting and wretched creature.</p>
+                    <button  onclick= "popupOpener('story11'); matchPosition('story11', this);   closeThis(this)" > Train to beat it up  </button>
+                    <button  onclick= " popupOpener('story13'); matchPosition('story13', this);   death(this)" > Intimidate it </button>
+                </div>
+                <div id="story11" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s11.png" />
+                    <p> You train.</p>
+                    <button  onclick= "popupOpener('story12'); matchPosition('story12', this);   closeThis(this)" > Take steroids </button>
+                    <button  onclick= " popupOpener('story14'); matchPosition('story14', this);   closeThis(this)" > Return to the abhorrent creature</button>
+                </div>
+                <div id="story12" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s12.png" />
+                    <p> The potion (drugs) envigorate you.</p>
+                    <button  onclick= "popupOpener('story4'); matchPosition('story4', this);   death(this)  " > Take more steroids </button>
+                    <button  onclick= " popupOpener('story14'); matchPosition('story14', this);   closeThis(this)" > Return to the abhorrent creature to absolutely take its lunch money</button>
+                </div>
+                <div id="story13" class="scary-popup-box" >
+                    <img class = "photo" src="./img/story/s13.PNG" />
+                    <p> You were no match for it</p>
+                    <button  onclick= " closeThis(this)" > Accept your demise </button>
+                </div>
+                <div id="story14" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s14.png" />
+                    <button   onclick= "closeThis(this); " >  You have finished the free trial. Download now to play! </button>
+                </div>
+
+
+
+
+
 
                 <div id="popup" class="random-popup-box" data-onopen="doorSound">
                     <img class="photo" src="./img/door.png" alt="door" />
@@ -149,25 +228,30 @@
                     <button id="closeBtn" onclick="closeThis(this);">x</button>
                 </div>
                 
+<!--
 				<div id="fixed-horizontal-popup" class="fixed-popup-box-bottom">
                     <p>This is fixed to the bottom</p>
                     <button  onclick="closeThis(this)">Exit</button>
                 </div>
+
 
 				<div id="fixed-horizontal-popup" class="fixed-popup-box-top">
                     <p>This is fixed to the top</p>
                      <button  onclick="closeThis(this)">Exit</button>
                 </div>
 
+
 				<div id="fixed-vertical-popup" class="fixed-popup-box-left">
                     <p>This is fixed to the left</p>
                      <button  onclick="closeThis(this)">Exit</button>
                 </div>
 
+
 				<div id="fixed-vertical-popup" class="fixed-popup-box-right">
                     <p>This is fixed to the right</p>
                      <button  onclick="closeThis(this)">Exit</button>
                 </div>
+            -->
 
                 <div id="cookie-consent" class="fixed-popup-box-bottom">
                     <p>

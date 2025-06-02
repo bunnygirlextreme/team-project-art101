@@ -11,7 +11,7 @@ var maxNumPopups = 10;
 
 let currentAudio = null;
 
-var allowPopups = false;
+var allowPopups = true;
 
 
 
@@ -31,6 +31,8 @@ function popupOpener(id = "popup", display = "block", delay = 0) {
   const popup = RandElement(id);
 
   if (!popup) return;
+  
+  if (isPopupBlocked(popup.id)) return;
 
   // math made using my references
   // used some stack overflow but mostly google ai prompt on google
@@ -126,7 +128,7 @@ function matchPosition(popup2, popup1) {
   move.style.top = ref.style.top;
   move.style.left = ref.style.left;
   move.style.display = "block";
-}
+} 
 
 // returns how many total popups there are visible
 function popupCount() {
@@ -177,6 +179,7 @@ function audioWhileVisible(popupElement, filePath, loop = false, delay = 0, ) {
 function doorSound(popupElement) {
   audioWhileVisible(popupElement, "./sounds/doorknock.mp3", false, 0);
 }
+
 
 
 // ------------------------------------------------------------------------------------------------------
@@ -247,6 +250,7 @@ function closeAll(id) {
     popup.style.display = "none";
     // sets flag for the popup to not be repeated
     popup.dataset.active = "false";
+    resetBlocked();
 }
 } 
 
@@ -256,6 +260,7 @@ function closeId(id) {
   if (element) {
     element.style.display = "none";
     element.dataset.active = "false";
+    resetBlocked();
   }
 }
 
@@ -264,7 +269,28 @@ function closeThis(element = this){
   const id = element.parentElement;
   id.style.display = "none";
   id.dataset.active = "false";
+  resetBlocked();
 }
+
+// fades out popup and plays sound
+function plea(element){
+    const id = element.parentElement;
+    const sound = new Audio('sounds/smited.mov');
+    sound.play();
+    $(id).fadeOut(2300, function () {
+    });
+    resetBlocked();
+}
+// fades out popup and plays sound
+function death(element){
+    const id = element.parentElement;
+    const sound = new Audio('sounds/death.mp3');
+    sound.play();
+    $(id).fadeOut(2500, function () {
+    });
+    resetBlocked();
+}
+
 
 // ------------------------------------------------------------------------------------------------------
 // Spawn popup funcs
@@ -285,7 +311,9 @@ function roulette(){
         () => popupOpener(),                       
         () => openHorizontalBorderPopup(),        
         () => openVerticalBorderPopup(),  
-        () => popupOpener("candy","flex")
+        () => popupOpener("candy","flex"),
+        () => popupOpener("story1"),
+        () => popupOpener("mo1")
       //  () => nicePopupOpener(popupName, display type ex: flex,block,etc)  
       // make sure both args in parenthesis   
       ];
@@ -318,17 +346,43 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-document.getElementById("popupToggle").addEventListener("change", function () {
-  allowPopups = this.checked;
-  if (!this.checked) {
-    closeAll('popup');
-    closeAll('fixed-horizontal-popup');
-    closeAll('fixed-vertical-popup');
-    closeAll('cookie-consent');
-  }else{
-    showCookiePopup();
-  }
-});
+
+
+
+function isPopupBlocked(popupId) {
+  const index = Blockees.indexOf(popupId);
+  if (index === -1) return false;
+
+  const blockers = Blockers[index] || [];
+
+  const isBlocked = blockers.some(id => {
+    const elements = document.querySelectorAll(`[id="${id}"]`);
+    return Array.from(elements).some(element => element.style.display === "block");
+  });
+
+  return isBlocked;
+}
+
+function resetBlocked() {
+  Blockees.forEach(blockeeId => {
+    if (!isPopupBlocked(blockeeId)) {
+      const elements = document.querySelectorAll(`[id="${blockeeId}"]`);
+      elements.forEach(el => el.dataset.active = "false");
+    }
+  });
+}
+
+// these work off index
+// for example the first element of Blockers blocks everything in the first list of Blockees
+const Blockees = ["story1", "mo1"]; 
+const Blockers = [
+  // Blocks "story1" from spawning
+  ["story1","story2","story3","story4","story5","story6","story7","story8","story8","story10","story11","story12","story13","story14"], 
+   // Blocks mo1 from spawning
+  ["mo2"]
+  //,["popup_names"]                   
+];
+
 
 //----------------------------------------------------------------------------------------
 // Fake Cookie Consent 
@@ -381,3 +435,5 @@ denyBtn.addEventListener("mouseenter", () => {
   denyBtn.style.left = `${randX}px`;
   denyBtn.style.top = `${randY}px`;
 });
+
+
