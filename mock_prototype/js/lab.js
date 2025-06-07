@@ -7,11 +7,11 @@
 // ------------------------------------------------------------------------------------------------------
 
 
-var maxNumPopups = 10;
+
 
 let currentAudio = null;
 
-var allowPopups = true;
+
 
 
 
@@ -22,11 +22,7 @@ var allowPopups = true;
 
 // takes in an id string ex: 'popup2'
 // opens it randomly on the page
-function popupOpener(id = "popup", display = "block", delay = 0) {
-
-  // prevents spawning if there are more than maxNumPopups visible
-  if (!allowPopups || popupCount() >= maxNumPopups) return;
-
+function popupOpener(id = "popup", display = "block") {
   // obtains specific element id of the id taken as input
   const popup = RandElement(id);
 
@@ -49,24 +45,15 @@ function popupOpener(id = "popup", display = "block", delay = 0) {
   // displays popup
   popup.style.display = display;
 
-  if(delay != 0){
-  setTimeout(() => {
-    popup.style.display = "none";
-    popup.dataset.active = "false";
-  }, delay);
+  console.log(popup.id);
+
+  if (popup.id === 'popup-door') {
+    playPopupSound(popup); //sound for the door pop-up
   }
 
-
-  // on popup open function calls
-  const func = popup.dataset.onopen;
-  if(func) window[func](popup); 
-  
 }
-
+/*
 function openHorizontalBorderPopup(display = "block") {
-  // prevents spawning if there are more than maxNumPopups visible
-  if (!allowPopups || popupCount() >= maxNumPopups) return;
-
   const popup = RandElement('fixed-horizontal-popup');
 
   const maxX = window.innerWidth - popup.offsetWidth ;
@@ -77,8 +64,6 @@ function openHorizontalBorderPopup(display = "block") {
 }
 
 function openVerticalBorderPopup(display = "block") {
-  // prevents spawning if there are more than maxNumPopups visible
-  if (!allowPopups || popupCount() >= maxNumPopups) return;
 
   const popup = RandElement('fixed-vertical-popup');
 
@@ -88,7 +73,7 @@ function openVerticalBorderPopup(display = "block") {
 
   popup.style.display = display;
 }
-
+*/
 // ------------------------------------------------------------------------------------------------------
 // Helper funcs (use these in other funcs to simplify ur life)
 // ------------------------------------------------------------------------------------------------------
@@ -129,57 +114,6 @@ function matchPosition(popup2, popup1) {
   move.style.left = ref.style.left;
   move.style.display = "block";
 } 
-
-// returns how many total popups there are visible
-function popupCount() {
-  const allPopups = document.querySelectorAll('[id="popup"], [id="fixed-horizontal-popup"], [id="fixed-vertical-popup"]');
-  let count = 0;
-  allPopups.forEach(p => {
-    if (p.style.display === "block") count++;
-  });
-  return count;
-}
-
-// audio handler
-function audioWhileVisible(popupElement, filePath, loop = false, delay = 0, ) {
-
-  setTimeout(() => {
-  
-    // If there's already an audio playing, stop it
-    if (currentAudio) {
-      currentAudio.pause(); // Stop the current audio
-      currentAudio.currentTime = 0; // Reset the audio to the start
-    }
-
-    // Create and play the new audio
-    currentAudio = new Audio(filePath);
-    currentAudio.loop = loop;
-    currentAudio.play()
-      .catch(error => {
-        console.log("Error playing sound:", error);
-      });
-
-  }, delay); 
-      
-  // checks if popup is closed and makes sure to pause audio
-  const interval = setInterval(() => {
-    if (popupElement.style.display !== "block") {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-      clearInterval(interval);
-    }
-  }, 500); 
-
-}
-
-// function should be called on data-onopen
-// manually set parameters
-// this is a wrapper
-// parameters: popupElement , the file path (should be ./sounds/____) , true/false (whether you want audio to constantly loop), delay (ex: 15000 is 15 seconds)
-function doorSound(popupElement) {
-  audioWhileVisible(popupElement, "./sounds/doorknock.mp3", false, 0);
-}
-
 
 
 // ------------------------------------------------------------------------------------------------------
@@ -266,10 +200,16 @@ function closeId(id) {
 
 // closes parent popup if you use this as parameter
 function closeThis(element = this){
+  // id = element
+  // id.id = element id
   const id = element.parentElement;
   id.style.display = "none";
   id.dataset.active = "false";
   resetBlocked();
+  if (id.id === 'popup-door' && currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
 }
 
 // fades out popup and plays sound
@@ -291,6 +231,29 @@ function death(element){
     resetBlocked();
 }
 
+//--------------------------------------------------------
+// Sound for (Door Pop -Up)
+//-----------------------------------------------------
+function playPopupSound(popup) {
+  if (popup.id === 'popup-door') {
+    // If there's already an audio playing, stop it
+    if (currentAudio) {
+      currentAudio.pause(); // Stop the current audio
+      currentAudio.currentTime = 0; // Reset the audio to the start
+    }
+
+    // Create and play the new audio
+    currentAudio = new Audio('./sounds/doorknock.mp3');
+    currentAudio.play()
+      .catch(error => {
+        console.log("Error playing sound:", error);
+      });
+      
+  }
+}
+
+
+
 
 // ------------------------------------------------------------------------------------------------------
 // Spawn popup funcs
@@ -309,8 +272,9 @@ function startRandomSpawner() {
 function roulette(){
       const funcs = [
         () => popupOpener(),                       
-        () => openHorizontalBorderPopup(),        
-        () => openVerticalBorderPopup(),  
+        // () => openHorizontalBorderPopup(),        
+       // () => openVerticalBorderPopup(), 
+        () => popupOpener("popup-door"), 
         () => popupOpener("candy","flex"),
         () => popupOpener("story1"),
         () => popupOpener("mo1")
@@ -318,8 +282,18 @@ function roulette(){
       // make sure both args in parenthesis   
       ];
 
-      let index = Math.floor(Math.random() * 1000) % funcs.length;
       
+
+      let index = Math.floor(Math.random() * 1000) % funcs.length;
+
+      const doorPopupChance = 0.5; //made a low chance bc this shit was getting annoying
+      if(index === 3){
+        if (Math.random() < doorPopupChance ) {
+          console.log("Door was Denied");
+          return;
+        }
+      }
+     
       funcs[index]();
 }
 
@@ -344,9 +318,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
-
-
 
 
 function isPopupBlocked(popupId) {
@@ -404,8 +375,6 @@ function acceptCookies() {
  
 
 function showCookiePopup() {
-  if (!allowPopups || popupCount() >= maxNumPopups) return;
-
   const cookieBanner = document.getElementById("cookie-consent");
   if (cookieBanner) {
     cookieBanner.style.display = "block";
