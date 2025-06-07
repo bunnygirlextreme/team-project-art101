@@ -155,7 +155,7 @@
                 </div>
                 <div id="story4" class="scary-popup-box" >
                     <img class = "photo" src="./img/story/s4.png" style = "z-index: 1" />
-                    <button   onclick= "closeThis(this);" > Accept your fate.</button>
+                    <button   onclick= "popupOpener('story14'); matchPosition('story14', this);closeThis(this);" > Accept your fate.</button>
                 </div>
                 <div id="story3" class="bigger-popup-box" style = "z-index: 10000000">
                     <img class = "large-photo" src="./img/story/s3.jpeg" />
@@ -199,21 +199,33 @@
                     <img class = "large-photo" src="./img/story/s11.png" />
                     <p> You train.</p>
                     <button  onclick= "popupOpener('story12'); matchPosition('story12', this);   closeThis(this)" > Take steroids </button>
-                    <button  onclick= " popupOpener('story14'); matchPosition('story14', this);   closeThis(this)" > Return to the abhorrent creature</button>
+                    <button  onclick= " popupOpener('story16'); matchPosition('story16', this);   closeThis(this)" > Return to the abhorrent creature</button>
                 </div>
                 <div id="story12" class="bigger-popup-box" >
                     <img class = "large-photo" src="./img/story/s12.png" />
                     <p> The potion (drugs) envigorate you.</p>
-                    <button  onclick= "popupOpener('story4'); matchPosition('story4', this);   death(this)  " > Take more steroids </button>
-                    <button  onclick= " popupOpener('story14'); matchPosition('story14', this);   closeThis(this)" > Return to the abhorrent creature to absolutely take its lunch money</button>
+                    <button  onclick= "popupOpener('story17'); matchPosition('story17', this);   death(this)  " > Take more steroids </button>
+                    <button  onclick= " popupOpener('story15'); matchPosition('story15', this);   closeThis(this)" > Return to the abhorrent creature to absolutely take its lunch money</button>
                 </div>
                 <div id="story13" class="scary-popup-box" >
                     <img class = "photo" src="./img/story/s13.PNG" />
                     <p> You were no match for it</p>
-                    <button  onclick= " closeThis(this)" > Accept your demise </button>
+                    <button  onclick= "popupOpener('story17'); matchPosition('story17', this); closeThis(this)" > Accept your demise </button>
                 </div>
                 <div id="story14" class="bigger-popup-box" >
                     <img class = "large-photo" src="./img/story/s14.png" />
+                    <button   onclick= "closeThis(this); " >  You have finished the free trial. Download now to play! </button>
+                </div>
+                <div id="story15" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s15.jpg" />
+                    <button   onclick= "closeThis(this); " >  You have finished the free trial. Download now to play! </button>
+                </div>
+                <div id="story16" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s16.jpg" />
+                    <button   onclick= "closeThis(this); " >  You have finished the free trial. Download now to play! </button>
+                </div>
+                <div id="story17" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s17.jpg" />
                     <button   onclick= "closeThis(this); " >  You have finished the free trial. Download now to play! </button>
                 </div>
 
@@ -222,7 +234,7 @@
 
 
 
-                <div id="popup" class="random-popup-box" data-onopen="doorSound">
+                <div id="popup-door" class="random-popup-box" >
                     <img class="photo" src="./img/door.png" alt="door" />
 
                     <button id="closeBtn" onclick="closeThis(this);">x</button>
