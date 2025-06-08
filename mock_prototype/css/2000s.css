@@ -117,9 +117,17 @@ footer {
   border: solid;
   color: black;
   border-width: 2px;
-  padding: 5px;
+  padding: 10px;
   margin-left: 10px;
   background-color: rgb(238, 238, 144);
+  color:rgb(87, 7, 7)
+}
+
+h4 {
+  color: rgb(180, 18, 18);
+  text-shadow: 2px 1px #dbc16b;
+  font-size: 20px;
+  margin-top: 5px;
 }
 
 
