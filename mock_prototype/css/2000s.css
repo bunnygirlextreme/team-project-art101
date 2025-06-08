@@ -154,6 +154,9 @@ h4 {
   border-radius: 8px;
   display: none;
   bottom: 0px;
+
+
+  z-index: 10000000;
 }
 .fixed-popup-box-top {
   position: fixed;
@@ -163,6 +166,9 @@ h4 {
   border-radius: 8px;
   display: none;
   top: 0px;
+
+  
+  z-index: 10000000;
 }
 .fixed-popup-box-right {
   position: fixed;
