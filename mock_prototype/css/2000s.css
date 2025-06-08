@@ -113,7 +113,14 @@ footer {
   color: #333;
 }
 
-
+#notice {
+  border: solid;
+  color: black;
+  border-width: 2px;
+  padding: 5px;
+  margin-left: 10px;
+  background-color: rgb(238, 238, 144);
+}
 
 
 .random-popup-box {
