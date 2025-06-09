@@ -349,6 +349,7 @@ function roulette(){
         () => popupOpener("popup-baby"),
         () => popupOpener("popup-buff"),
         () => popupOpener("popup-dating"),
+        () => popupOpener("popup-conspiracy"),
       //  () => nicePopupOpener(popupName, display type ex: flex,block,etc)  
       // make sure both args in parenthesis   
   ];
