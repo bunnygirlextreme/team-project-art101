@@ -1,42 +1,302 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- This title is used for tabs and bookmarks -->
-	<title>Home</title>
 
-	<link rel="shortcut icon" href="img/slug.ico"/> 
-	<!-- Use UTF character set, a good idea with any webpage -->
-	<meta charset="UTF-8" />
-	<!-- Set viewport so page remains consistently scaled w narrow devices -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- Lab-specifc CSS file for any special styling of this particular page -->
-	<link rel="stylesheet" type="text/css" href="css/homepage.css">
-	<!-- Link to javascript file - DEFER waits until all elements are rendered -->
-	<script type="text/javascript" src="./js/lab.js" DEFER></script> 
+	<title>Demo: Creature pop-up</title>
+
+	<link rel="shortcut icon" href="./img/slug.ico"/> 
+
+  	<meta charset="UTF-8" />
+
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/2000s.css">
+
+	<script src="js/lab.js" DEFER></script>
+
+    <script src="js/candycrush.js" DEFER></script>
+	
 </head>
 <body>
 
+	<main id="content">
+ 		<section>
+
+        <nav>    <span class="hover-trigger"> Climate Change News 2025</span>    </nav>
+            <div class="container">
+
+            <nav>
+                  <ul class="navbar">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Science News</a></li>
+                  <li><a href="#">Climate Politics</a></li>
+                  <li><a href="#">Health & Justice</a></li>
+                  <li><a href="#">Contact</a></li>
+                  </ul>
+            </nav>
+
+
+    <main id="content">
+        <section>
+            <div class="search-container">
+              <input type="text" placeholder="Search..." class="search-input">
+              <button class="search-button">Go</button>
+            </div>
+            <div id="notice">
+                <h4>NOTICE:</h4>
+                <p>Unfortunately, we have failed to meet our funding goal. To combat rising prices destroying credible sources, we have chosen to partner with advertisers to keep our news afloat. Please be patient with this change.</p>
+            </div>           
+            <h1>UPDATE: California Facing Urgent Climate Crisis, On Route to Collapse</h1>
+            <div id="Sealevel">
+                    <h2>Coastal California Communities Prepare for Evacuation</h2>
+                    <img src="./img/tw_sea-level_rise.jpg" width="500">
+                    <p>Following last week's collapse of the tip of Florida into the Gulf of Mexico, California is now set to suffer the same consequence within the next few days. Coastal communities are currently preparing to evacuate, though evacuation costs are looking to be in the tens of thousands of dollars per family. "I'm just not sure what we're expected to do," reports one anonymous California resident. "We can hardly afford our own rent, and now we have to pay to evacuate to a floating community that's twice the cost? How are we supposed to survive?"</p>
+            </div>
+            <div id="Problems">
+                    <h2>How Did It Come to This?</h2>
+                    <img src="./img/diagram.jpg" width="500">
+                    <p>Reports from back in 2025 claimed that: "Sea levels are rising primarily because of two things: melting ice and expanding water. As global temperatures climb (thanks, greenhouse gases), glaciers and ice sheets—especially in Greenland and Antarctica—are melting at alarming rates. That water has to go somewhere, and spoiler alert: it's not evaporating into space.
+
+
+                    Second, warm water takes up more space than cold water. It's called thermal expansion, and it means the oceans are not just getting warmer—they're getting fatter.
+
+
+                    The result? The global sea level has risen about 8-9 inches (20-23 centimeters) since 1880. That might not sound like much unless you're a sandcastle, a sea turtle, or a human who lives on the coast. Which, by the way, includes hundreds of millions of people." When we consider how our world looks now, the bleakness of this report really shines through. Why didn't they listen back then? Why are we still not listening now?</p>
+            </div>
 
 
 
-	
-		<h2>Demos: </h2>
-		
-				<div>	
-					<a href="demos/captcha.html">    <p>captcha demo</p>   </a>
-		
-					<a href="demos/creature.html">   <p>creature demo</p>   </a>
-	
-					<a href="demos/shrink.html">  <p>shrink demo</p>   </a>
 
-					<a href="demos/squirrely.html"><p>squirelly demo</p></a>
+            <div id="Results">
+                    <h2>How Did Past Communities Deal With It?</h2>
+                    <img src="./img/chart.avif" width="500">
+                    <p>In truth, they didn't. Governments rejected evironmental concerns, ensuring their followers to not worry. Corporations continued unchecked for decades, even centuries. Warnings were constant and abundant, but no one with the power to do anything about it ever seemed to care. Climate science was actively doubted and suppressed. As we evacuate now, we see many marginalized communities forced to either stand their ground or escape further inland, while the wealthy may pay for tickets to the floating island project.</p>
+                   
+            </div>
 
-					<a href="mock_prototype/prototype.html"> <p>prototype</p>   </a>
 
-					<a href="demos/2000s.html"> <p> 2000s UI Test </p> </a>
+            <div id="Todo">
+                    <h2>What Do We Do now?</h2>
+                    <img src="./img/CC.jpg" width="500">
+                    <p>We learn to survive. Many are fleeing inland, some onto oceantop communities that bring along their own slough of issues. We continue petitioning, begging for anyone to hear us, to trust what the Earth is telling us.</p>
+                   
+            </div>
+    
+            
+            </div>
+          
+           
 
+
+
+
+           
+        </section>
+        <nav id="links">
+            <!-- Put links to other pages (including the homepage) here. -->
+        </nav>
+    </main>
+ 
+
+<!--
+  <footer>&copy; 2025 Trollware.com</footer>
+-->
+  <footer>&copy; 2025 Adfected.com</footer>
+
+
+
+			<!-- Popup section (aslong as you use id "popup" the div can be selected to be spawned) attach functions to the exit button for effects and stuff -->
+			
+			 	<div id="popup" class="taunt-popup-box">
+						<p>Try to exit if you think you can. </p>
+						<h1> 🙈🙈🙈  </h1>
+						<button id="closeBtn" class = "closeBtn" onclick="closeThis(this)">Exit</button>
 				</div>
-				
+
+	
+                <div id="candy" class = "candycrush" style = "display:none;">
+                    <button  style="animation: pulse 1s infinite; background: none; border: none; cursor:pointer" type="image" onclick= "popupOpener('c2');  matchPosition('c2', this); startCandyCrushGame();">
+                        <img class = "photo"  style = "position:relative; top: 110px"src="img/play_now.png"  />
+                    </button>
+
+                    <img style = "position:relative; pointer-events: none; width: 700px; bottom: 40px; left: 80px" src="img/finger.png"  />
+                        <div style="position:relative; font-size: 30px; font-weight: bold; color: #ff00cc; text-shadow: 2px 2px 0px white; bottom: 530px"> Beat This Level To Win! </div>
+                        <div style="position:relative; font-size: 18px; color: #444; bottom: 535px ">Only 3% of players succeed!</div>
+                        <div style="position:relative; font-size: 25px; font-weight: bold; color: green; text-shadow: 2px 2px 0px white; bottom: 165px;">🟢 14,362 players online now</div>
+                </div>
+
+                <div id = "c2" class = "candycrush" style="display:none; ">
+                                <div class="score-board">
+                                <p id="score" style="font-size: 125%; color: #fbefef; font-weight: bold;"> 0 </p>
+                                </div>
+                                <div class="grid"></div>	
+
+                                <button class="x-button" onclick= "closeThis(this); closeId('candy')">x</button>
+                                <p style=" position:relative; bottom: 8px;"> credit: <a target="_blank" href="https://github.com/vishalsingh2972/JS-CandyCrushSaga">Source</a></p>
+                                
+                                
+                </div>
+
+				<div id="popup" class="random-popup-box">
+                    <div>
+                        <img src="./img/c2.png" alt = "captcha">
+                    </div>
+
+                    <input  type="text" id="input" placeholder="Type the Characters above">
+                            <button id="captcha">Enter</button>
+                            
+                            <div id="output"></div>
+                </div>
+
+
+				<div id="mo1" class="scary-popup-box">
+                    <img class="photo" src="./img/mo_shellshock.png" alt="creature" />
+                    <button  onclick= "popupOpener('mo2');  matchPosition('mo2', this); closeThis(this);" > Exiting will destroy the creature, are you sure? </button>
+                </div>
+                <div id="mo2" class="scary-popup-box">
+                    <img class="photo" src="./img/mo_box.png" alt="creature" />
+                    <p>Please Have Mercy!</p>
+                    <button  onclick="plea(this)"> Click to smite the creature and return. </button>
+                </div>
+
+
+                <div id="story1" class="bigger-popup-box"  >
+                    <img  src="./img/story/1.webp"  />
+                    <button  onclick= "popupOpener('story2'); closeThis(this); matchPosition('story2', this);" > Play Now </button>
+                </div>
+                <div id="story2" class="bigger-popup-box" style = "z-index: 10000000">
+                    <img class = "large-photo" src="./img/story/2.jpeg" />
+                    <p>You are adventuring and spot two odd creatures, what do you do?</p>
+                    <button  onclick= "popupOpener('story3'); closeThis(this); matchPosition('story3', this);" > Aproach </button>
+                    <button  onclick= " popupOpener('story4'); matchPosition('story4', this);   death(this);" > Flee </button>
+                </div>
+                <div id="story4" class="scary-popup-box" >
+                    <img class = "photo" src="./img/story/s4.png" style = "z-index: 1" />
+                    <button   onclick= "popupOpener('story14'); matchPosition('story14', this);closeThis(this);" > Accept your fate.</button>
+                </div>
+                <div id="story3" class="bigger-popup-box" style = "z-index: 10000000">
+                    <img class = "large-photo" src="./img/story/s3.jpeg" />
+                    <p> You are offered a quest, what do you do?</p>
+                    <button  onclick= "popupOpener('story5'); matchPosition('story5', this);   closeThis(this)" > Trade </button>
+                    <button  onclick= " popupOpener('story6'); matchPosition('story6', this);   closeThis(this)" > Accept Quest </button>
+                </div>
+                <div id="story5" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s5.png" />
+                    <p>You can't afford anything</p>
+                    <button   onclick= "popupOpener('story3'); closeThis(this); matchPosition('story3', this); " >Leave in shame.</button>
+                </div>
+                <div id="story6" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s6.png" />
+                    <p>You are tasked with locating the mystical item churu. Where do you check first?</p>
+                    <button  onclick= "popupOpener('story7'); matchPosition('story7', this);   closeThis(this)" > House Next Door   </button>
+                    <button  onclick= " popupOpener('story10'); matchPosition('story10', this);   closeThis(this)" > Goblin Den </button>
+                </div>
+                <div id="story7" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s7.png" />
+                    <p> You are greeted with a very unfriendly looking fellow. What do you do!?</p>
+                    <button  onclick= "popupOpener('story8'); matchPosition('story8', this);   closeThis(this)" > Ask nicely if he has clues regarding the mystical item   </button>
+                    <button  onclick= " popupOpener('story8'); matchPosition('story8', this);   closeThis(this)" > Demand he cough the goods up </button>
+                </div>
+                <div id="story8" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s8.png" />
+                    <p> Suddenly a loud bang resounds in the background, and the individual flies into a rage.</p>
+                     <button  onclick= " popupOpener('story9'); matchPosition('story9', this);   closeThis(this)" > Chase after! You need that damn churu</button>
+                </div>
+                <div id="story9" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s9.png" />
+                    <button   onclick= "closeThis(this); " >  You have finished the free trial. Download now to play! </button>
+                </div>
+                <div id="story10" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s10.jpeg" />
+                    <p> You encounter an absolutely revolting and wretched creature.</p>
+                    <button  onclick= "popupOpener('story11'); matchPosition('story11', this);   closeThis(this)" > Train to beat it up  </button>
+                    <button  onclick= " popupOpener('story13'); matchPosition('story13', this);   death(this)" > Intimidate it </button>
+                </div>
+                <div id="story11" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s11.png" />
+                    <p> You train.</p>
+                    <button  onclick= "popupOpener('story12'); matchPosition('story12', this);   closeThis(this)" > Take steroids </button>
+                    <button  onclick= " popupOpener('story16'); matchPosition('story16', this);   closeThis(this)" > Return to the abhorrent creature</button>
+                </div>
+                <div id="story12" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s12.png" />
+                    <p> The potion (drugs) envigorate you.</p>
+                    <button  onclick= "popupOpener('story17'); matchPosition('story17', this);   death(this)  " > Take more steroids </button>
+                    <button  onclick= " popupOpener('story15'); matchPosition('story15', this);   closeThis(this)" > Return to the abhorrent creature to absolutely take its lunch money</button>
+                </div>
+                <div id="story13" class="scary-popup-box" >
+                    <img class = "photo" src="./img/story/s13.PNG" />
+                    <p> You were no match for it</p>
+                    <button  onclick= "popupOpener('story17'); matchPosition('story17', this); closeThis(this)" > Accept your demise </button>
+                </div>
+                <div id="story14" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s14.png" />
+                    <button   onclick= "closeThis(this); " >  You have finished the free trial. Download now to play! </button>
+                </div>
+                <div id="story15" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s15.jpg" />
+                    <button   onclick= "closeThis(this); " >  You have finished the free trial. Download now to play! </button>
+                </div>
+                <div id="story16" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s16.jpg" />
+                    <button   onclick= "closeThis(this); " >  You have finished the free trial. Download now to play! </button>
+                </div>
+                <div id="story17" class="bigger-popup-box" >
+                    <img class = "large-photo" src="./img/story/s17.jpg" />
+                    <button   onclick= "closeThis(this); " >  You have finished the free trial. Download now to play! </button>
+                </div>
+
+
+                <div id="popup-door" class="random-popup-box" >
+                    <img class="photo" src="./img/door.png" alt="door" />
+
+                    <button id="closeBtn" onclick="closeThis(this);">x</button>
+                </div>
+                
+<!--
+                Templates for border popups:
+
+				<div id="fixed-horizontal-popup" class="fixed-popup-box-bottom">
+                    <p>This is fixed to the bottom</p>
+                    <button  onclick="closeThis(this)">Exit</button>
+                </div>
+
+
+				<div id="fixed-horizontal-popup" class="fixed-popup-box-top">
+                    <p>This is fixed to the top</p>
+                     <button  onclick="closeThis(this)">Exit</button>
+                </div>
+
+
+				<div id="fixed-vertical-popup" class="fixed-popup-box-left">
+                    <p>This is fixed to the left</p>
+                     <button  onclick="closeThis(this)">Exit</button>
+                </div>
+
+
+				<div id="fixed-vertical-popup" class="fixed-popup-box-right">
+                    <p>This is fixed to the right</p>
+                     <button  onclick="closeThis(this)">Exit</button>
+                </div>
+-->
+
+                <div id="cookie-consent" class="fixed-popup-box-bottom">
+                    <p>
+                    This site uses cookies to make your life better :)
+                    <button onclick="acceptCookies()" class="cookie-btn">Accept</button>
+                    <button id="deny-btn" class="cookie-btn">Deny</button>
+                    </p>
+                </div>
+
+
+            <div class ="links"> 
+                <a href="../index.html">Home</a>
+            </div>
+
+		</section>
+	</main>
 </div>
 </body>
 </html>
