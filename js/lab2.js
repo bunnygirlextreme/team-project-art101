@@ -375,9 +375,13 @@ function roulette(){
 // Start spawning (comment out if you do not want random spawns)
 // Wait 15 seconds before starting the popup spawner
 // Commented out for testing purposes
+
+// 15 seconds = 15000
+// 10 seconds = 15000
+// 5 seconds = 5000
 setTimeout(() => {
   startRandomSpawner();
-}, 15000); 
+}, 10000); 
 
 
 
