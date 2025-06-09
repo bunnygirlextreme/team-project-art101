@@ -338,7 +338,17 @@ function roulette(){
         () => popupOpener("popup-door"), 
         () => popupOpener("candy","flex"),
         () => popupOpener("story1"),
-        () => popupOpener("mo1")
+        () => popupOpener("mo1"),
+        () => popupOpener("popup-doctor"),
+        () => popupOpener("popup-cream"),
+        () => popupOpener("popup-jackpot"),
+        () => popupOpener("popup-creature"),
+        () => popupOpener("popup-stocks"),
+        () => popupOpener("popup-homealone"),
+        () => popupOpener("popup-infomercial"),
+        () => popupOpener("popup-baby"),
+        () => popupOpener("popup-buff"),
+        () => popupOpener("popup-dating"),
       //  () => nicePopupOpener(popupName, display type ex: flex,block,etc)  
       // make sure both args in parenthesis   
   ];
