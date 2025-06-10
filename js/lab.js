@@ -156,6 +156,19 @@ document.addEventListener("DOMContentLoaded", function () { // Move popup random
 });
 
 
+// Function for the API of picsum. Its an easier API so no AJAX was needed. 
+const adImg = document.getElementById('vertical-ad-img');
+
+function updateAdImage() {
+  adImg.src = `https://picsum.photos/200/600?random=${Date.now()}`;
+}
+
+updateAdImage();
+
+setInterval(updateAdImage, 10000);
+
+
+
 
 // ------------------------------------------------------
 

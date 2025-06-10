@@ -48,7 +48,7 @@
               <button class="search-button">Go</button>
             </div>
             <div id="notice">
-                <h4>NOTICE:</h4>
+                <h4 class = "hover-trigger">NOTICE:</h4>
                 <p>Unfortunately, we have failed to meet our funding goal. To combat rising prices destroying credible sources, we have chosen to partner with advertisers to keep our news afloat. Please be patient with this change.</p>
             </div>           
             <h1>UPDATE: California Facing Urgent Climate Crisis, On Route to Collapse</h1>
@@ -141,6 +141,8 @@
                                 
                                 
                 </div>
+                
+                
 
 				<div id="popup" class="random-popup-box">
                     <div>
@@ -252,14 +254,13 @@
                 </div>
 
 
+            <!--Random Pop Ups -->
+
                 <div id="popup-door" class="random-popup-box" >
                     <img class="photo" src="./img/door.png" alt="door" />
 
                     <button id="closeBtn" onclick="closeThis(this);">x</button>
                 </div>
-
-
-
 
                <div id="popup-doctor" class="random-popup-box" > 
                     <img class="photo" src="./img/doctor.png" />
@@ -285,11 +286,36 @@
                     <button id="closeBtn" onclick="closeThis(this);">x</button>
                 </div>
 
+                 <div id= "popup-lash" class = "random-popup-box">
+                    <img class = "photo" src = "./img/lashmaster.png">
+                    <button id="closeBtn" onclick="closeThis(this);">x</button>
+                </div>
+
+                 <div id= "popup-dog" class = "random-popup-box">
+                    <img class = "photo" src = "./img/dog.png">
+                    <button id="closeBtn" onclick="closeThis(this);">x</button>
+                </div>
+                
+                <div id= "popup-noob" class = "random-popup-box">
+                    <img class = "photo" src = "./img/noob.png">
+                    <button id="closeBtn" onclick="closeThis(this);">x</button>
+                </div>
+            
+                <div id="popup3" class="random-popup-box">
+                    <img class = "photo" src = "./img/last3seconds.png">
+                    <button id="closeBtn" onclick="closeThis(this);">x</button>
+                </div> <!-- fix the exit button bc this one is going to be squirrely-->
+
+             <!--Large Pop Ups -->
+
                  <div id="popup-infomercial" class="large-popup-box" >
                     <img class="big-photo" src="./img/infomercial.png"/>
 
                     <button id="closeBtn" onclick="closeThis(this);">x</button>
                 </div>
+
+
+             <!--Midsize Pop Ups -->
 
                 <div id="popup-stocks" class="mid-popup-box" >
                     <img class="mid-photo" src="./img/stocks.png"/>
@@ -327,6 +353,12 @@
                     <button id="closeBtn" onclick="closeThis(this);">x</button>
                 </div>
 
+
+                <div class="fixed-popup-box-right">
+                    <img id="vertical-ad-img" src="https://picsum.photos/200/600" alt="Random Ad Image" />
+                    <div class = "ad-text">Cool Images 4 U </div>
+                </div>
+               
 
 
                 

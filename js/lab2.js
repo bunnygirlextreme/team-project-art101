@@ -350,6 +350,10 @@ function roulette(){
         () => popupOpener("popup-buff"),
         () => popupOpener("popup-dating"),
         () => popupOpener("popup-conspiracy"),
+        () => popupOpener("popup-lash"),
+        () => popupOpener("popup-dog"),
+        () => popupOpener("popup-noob"),
+        () => popupOpener ("popup3"),
       //  () => nicePopupOpener(popupName, display type ex: flex,block,etc)  
       // make sure both args in parenthesis   
   ];
